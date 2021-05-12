@@ -5,11 +5,11 @@ inputs:
     description: 'whitelist or unwhitelist'
     required: true
     default: 'whitelist'
-  apiKey:  # id of input
+  apiKey:
     description: 'Appreciation Engine API key'
     required: true
     default: ''
-  domain:  # id of input
+  domain: 
     description: 'Domain for (un-)whitelisting'
     required: true
     default: 'example.com'
