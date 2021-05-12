@@ -1,4 +1,7 @@
 name: 'Appreciation Engine Whitelist'
+branding:
+  icon: 'target'  
+  color: 'green'
 description: 'Whitelists or unwhitelists domains for appreciation engine'
 inputs:
   operation: 
