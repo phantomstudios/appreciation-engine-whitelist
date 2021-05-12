@@ -1,4 +1,4 @@
-name: 'Appreciation Engine whitelist'
+name: 'Appreciation Engine Whitelist'
 description: 'Whitelists or unwhitelists domains for appreciation engine'
 inputs:
   operation: 
@@ -22,4 +22,3 @@ runs:
         --data "domain=${{ inputs.domain }}" \
         https://staging-sme.theappreciationengine.com/v1.1/app/${{ inputs.operation }}?
       shell: bash
-
