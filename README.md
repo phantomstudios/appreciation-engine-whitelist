@@ -2,7 +2,7 @@
 
 You can use this Github-Action to add or remove domains from Appreciation Engine's whitelist.
 
-The following workflow is an example a domain is added to the whitelist.
+The following workflow adds an example domain to the whitelist.
 
 ### .github/workflows/main.yml
 ```
