@@ -1,0 +1,29 @@
+name: 'Appreciation Engine Whitelist'
+branding:
+  icon: 'target'  
+  color: 'green'
+description: 'Whitelists or unwhitelists domains for appreciation engine'
+inputs:
+  operation: 
+    description: 'Whitelist or unwhitelist'
+    required: false
+    default: 'whitelist'
+  apiKey:
+    description: 'Appreciation Engine API key'
+    required: true
+  domain: 
+    description: 'Domain for modifying'
+    required: true
+  environment: 
+    description: 'Environment (staging or production)'
+    required: false
+    default: 'staging'
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        curl -X POST \
+        --data "apiKey=${{ inputs.apiKey }}" \
+        --data "domain=${{ inputs.domain }}" \
+        https://$([ "${{ inputs.environment }}" == "staging" ] && echo "staging-" || echo "")sme.theappreciationengine.com/v1.1/app/${{ inputs.operation }}?
+      shell: bash
