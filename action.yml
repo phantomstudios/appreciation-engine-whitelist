@@ -2,16 +2,19 @@ name: 'Appreciation Engine Whitelist'
 description: 'Whitelists or unwhitelists domains for appreciation engine'
 inputs:
   operation: 
-    description: 'whitelist or unwhitelist'
-    required: true
+    description: 'Whitelist or unwhitelist'
+    required: false
     default: 'whitelist'
   apiKey:
     description: 'Appreciation Engine API key'
     required: true
   domain: 
-    description: 'Domain for (un-)whitelisting'
+    description: 'Domain for modifying'
     required: true
-    default: 'example.com'
+  environment: 
+    description: 'Environment (staging or production)'
+    required: false
+    default: 'staging'
 runs:
   using: "composite"
   steps:
@@ -19,5 +22,5 @@ runs:
         curl -X POST \
         --data "apiKey=${{ inputs.apiKey }}" \
         --data "domain=${{ inputs.domain }}" \
-        https://staging-sme.theappreciationengine.com/v1.1/app/${{ inputs.operation }}?
+        https://$([ "${{ inputs.environment }}" == "staging" ] && echo "staging-" || echo "")sme.theappreciationengine.com/v1.1/app/${{ inputs.operation }}?
       shell: bash
